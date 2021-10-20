@@ -22,13 +22,11 @@ git config --global user.name "$BOT_NAME";
 git config --global user.email "$BOT_EMAIL";
 
 # Checkout
-git reset --hard
-git fetch --all
 git branch -a --contains ${GITHUB_SHA} --format="%(refname)"
 
 readonly local refname=$(git branch -a --contains ${GITHUB_SHA} --format="%(refname)" | head -1)
-if [[ "${refname}" = "refs/heads/3.y" ]]; then
-     readonly local branch="3.y"
+if [[ "${refname}" = "refs/heads/main" ]]; then
+     readonly local branch="main"
 else
      readonly local branch=${refname#refs/remotes/origin/}
 fi
