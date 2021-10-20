@@ -12,7 +12,7 @@
   </organization>
 
   <inceptionYear>2021</inceptionYear>
-  <description></description>
+  <description>Abstraction of types used(dates, periods, start-end date operations, etc...) in insurance products</description>
   <url>http://github.com/the-wrench-io/insurance-types-parent</url>
 
   <licenses>
