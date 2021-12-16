@@ -162,7 +162,7 @@ public class CoverVisitor {
   }
   
     
-  private ProjectionPeriodMonths visitProjectionPeriodMonths(LocalDate startDate, LocalDate endDate) {
+  public static ProjectionPeriodMonths visitProjectionPeriodMonths(LocalDate startDate, LocalDate endDate) {
     final var rolledEndDate = endDate.plusDays(1);
     final var period = Period.between(startDate, rolledEndDate);
     final var totalDays = Duration.between(startDate.atStartOfDay(), rolledEndDate.atStartOfDay()).toDays();
@@ -187,7 +187,7 @@ public class CoverVisitor {
         .build();
   }
   
-  private BigDecimal visitPercOfMonth(LocalDate target) {
+  private static BigDecimal visitPercOfMonth(LocalDate target) {
     final var dayOfMonth = target.getDayOfMonth();
     final var lengthOfMonth = target.lengthOfMonth();
     
@@ -245,7 +245,10 @@ public class CoverVisitor {
         }
       }
       
-      result.add(ImmutableProjectionDetail.builder().startDate(detailStartDate).endDate(detailEndDate).coverDetails(details).build());
+      result.add(ImmutableProjectionDetail.builder()
+          .startDate(detailStartDate).endDate(detailEndDate)
+          .projectionMonths(visitProjectionPeriodMonths(detailStartDate, detailEndDate))
+          .coverDetails(details).build());
       index++;
     }
     

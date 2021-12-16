@@ -154,6 +154,7 @@ public interface CoverRepository {
   interface ProjectionDetail {
     LocalDate getStartDate();
     LocalDate getEndDate();
+    ProjectionPeriodMonths getProjectionMonths();
     List<CoverDetail> getCoverDetails();
   }
   
