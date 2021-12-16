@@ -133,6 +133,7 @@
               <serverId>oss.sonatype.org</serverId>
               <nexusUrl>https://oss.sonatype.org/</nexusUrl>
               <description>${project.version}</description>
+              <stagingProgressTimeoutMinutes>120</stagingProgressTimeoutMinutes>
             </configuration>
             <executions>
               <execution>
